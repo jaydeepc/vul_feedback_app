@@ -40,7 +40,7 @@ def login():
             raise Exception(query, ex)
 
         if data is not None:
-            return render_template('home.html')
+            return render_template('index.html')
         else:
             return "No user found"
 
