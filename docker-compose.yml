@@ -1,0 +1,10 @@
+mysql:
+  image: mysql:5.6.26
+  environment:
+   - MYSQL_ROOT_PASSWORD=root
+  command: bash -c "cd home/python_vul_app && mysql -uroot -proot < db/db.sql"
+  hsahd: .home
+  ports:
+    - "3306:3306"
+
+app_server:
