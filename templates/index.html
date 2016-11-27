@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -12,6 +13,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/queries.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/searchbox.css') }}">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.scrollTo(0,0);
+        });
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -28,8 +37,8 @@
                   <nav class="pull">
                     <ul class="top-nav">
                       <li><a href="#intro">About Us <span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
-                      <li><a href="#features">Search Blogs <span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
-                      <li><a href="#responsive">Create Blogs <span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
+                      <li><a href="#features">Search Feedback <span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
+                      <li><a href="#responsive">Write Feedback <span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                     </ul>
                   </nav>
                 </div>
@@ -46,7 +55,7 @@
               <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center inner">
                   <h1 class="animated fadeInDown">Your Feedback<span> Makes us better</span></h1>
-                  <p class="animated fadeInUp delay-05s">A culture <em>Powered by ThoughtWorks</em></p>
+                  <p class="animated fadeInUp delay-05s"><em>Powered by ThoughtWorks</em></p>
                 </div>
               </div>
             </div>
@@ -56,8 +65,9 @@
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2 wp1">
-                <h1 class="arrow">Details about the Application</h1>
-                <p>This is just for being a bit fancy. Need to put some useless/meaningless stuff here.</p>
+                <h1 class="arrow">Who are we?</h1>
+                <p>Know better, book better and go better on the world's largest travel site. Browse over 385 million candid reviews, opinions, and photos of hotels, restaurants, and more - all by travellers like you. We are a popular forum with advice about virtually every destination, and more.
+                  No wonder so many travellers make Us their first stop before every trip.</p>
               </div>
             </div>
           </div>
@@ -66,339 +76,124 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h1 class="arrow">Love what you do, and you'll do it well</h1>
+                <h1 class="arrow">Search reviews by other users</h1>
                 <div class="features-wrapper">
-                  <div class="col-md-4 wp2">
-                    <div class="icon">
-                      <i class="fa fa-laptop shadow"></i>
-                    </div>
-                    <h2>Digital Design</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum
-                    primis in faucibus.</p>
-                  </div>
-                  <div class="col-md-4 wp2 delay-05s">
-                    <div class="icon">
-                      <i class="fa fa-code shadow"></i>
-                    </div>
-                    <h2>Web Development</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum
-                    primis in faucibus.</p>
-                  </div>
-                  <div class="col-md-4 wp2 delay-1s">
-                    <div class="icon">
-                      <i class="fa fa-heart shadow"></i>
-                    </div>
-                    <h2>Creative Direction</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum
-                    primis in faucibus.</p>
-                  </div>
+                      <form class="form-wrapper cf">
+                          <input type="text" placeholder="Search here..." required>
+                            <button type="submit">Search</button>
+                      </form>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Hotel Name</th>
+                            <th>City</th>
+                            <th>Review</th>
+                            <th>Average Rating</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><strong>Taj Bengal</strong></td>
+                            <td>Kolkata</td>
+                            <td>I wish they had some bengali cuisine!</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Ulto Dangar Shoja Hotel</strong></td>
+                            <td>Kolkata</td>
+                            <td>Awesome place! if you are in Kolkata, this is your place</td>
+                            <td>5</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Joy Maa Kali, Bengal hotel</strong></td>
+                            <td>Kolkata</td>
+                            <td>Well, stay only if you are from Matri Bhokto Ramproshad family!</td>
+                            <td>2</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Bhai giri hotel</strong></td>
+                            <td>Mumbai</td>
+                            <td>Best part of this hotel is their welcome drink! Cutting-Chaay with Batata bada!</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Bhook laagli</strong></td>
+                            <td>Mumbai</td>
+                            <td>Well they are mainly a fast food place! But yes, if you fall sick, while eating you can go to the hospital next door</td>
+                            <td>3</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Tujhya Aaicha Gho's Hotel</strong></td>
+                            <td>Mumbai</td>
+                            <td>Amazing place with a Bar, only open on RaviBar!</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Nakka Muka</strong></td>
+                            <td>Chennai</td>
+                            <td>So good! My nakka was always smelling the good food smell from their kitchen and Muka was always busy!</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Meesai Murukku</strong></td>
+                            <td>Chennai</td>
+                            <td>This is the king of all the hotels in chennai. A must if you are here!</td>
+                            <td>5</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Kakkoos</strong></td>
+                            <td>Chennai</td>
+                            <td>Do you even need a review? Look at the name, never ever go here!</td>
+                            <td>1</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+
+
                   <div class="clearfix"></div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section class="text-center" id="responsive">
-          <div class="container-fluid nopadding responsive-services">
-            <div class="wrapper">
-              <div class="iphone">
-                <div class="wp3"></div>
-              </div>
-              <div class="fluid-white"></div>
-            </div>
-            <div class="container designs">
-              <div class="row">
-                <div class="col-md-5 col-md-offset-7">
-                  <div id="servicesSlider">
-                    <ul class="slides">
-                      <li>
-                        <h1 class="arrow">Responsive Design Specialists</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero. </p>
-                        <p>
-                        Mauris ultrices odio vitae nulla ultrices iaculis. Nulla rhoncus odio eu lectus faucibus facilisis. Maecenas ornare augue vitae sollicitudin accumsan. </p>
-                        <p>Etiam eget libero et erat eleifend consectetur a nec lectus. Sed id tellus lorem. Suspendisse sed venenatis odio, quis lobortis eros.</p>
-                      </li>
-                      <li>
-                        <h1 class="arrow">Bootstrap Professionals</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero. </p>
-                        <p>
-                        Mauris ultrices odio vitae nulla ultrices iaculis. Nulla rhoncus odio eu lectus faucibus facilisis. Maecenas ornare augue vitae sollicitudin accumsan. </p>
-                        <p>Etiam eget libero et erat eleifend consectetur a nec lectus. Sed id tellus lorem. Suspendisse sed venenatis odio, quis lobortis eros.</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="swag text-center">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <h1>I got 99 Problems<span>but <em>design</em> 'aint one</span></h1>
-                <a href="#portfolio" class="down-arrow-btn"><i class="fa fa-chevron-down"></i></a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="portfolio text-center section-padding" id="portfolio">
-          <div class="container">
-            <div class="row">
-              <div id="portfolioSlider">
-                <ul class="slides">
-                  <li>
-                    <div class="col-md-4 wp4">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/portfolio-01.jpg" alt="Portfolio Item">
-                          <div class="overlay">
-                            <a href="#" class="expand"><i class="fa fa-search"></i><br>View More</a>
-                            <a class="close-overlay hidden">x</a>
-                          </div>
-                        </div>
-                      </div>
-                      <h2>Creative Minds</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                    </div>
-                    <div class="col-md-4 wp4 delay-05s">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/portfolio-02.jpg" alt="Portfolio Item">
-                          <div class="overlay">
-                            <a href="#" class="expand"><i class="fa fa-search"></i><br>View More</a>
-                            <a class="close-overlay hidden">x</a>
-                          </div>
-                        </div>
-                      </div>
-                      <h2>Creative Hearts</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                    </div>
-                    <div class="col-md-4 wp4 delay-1s">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/portfolio-03.jpg" alt="Portfolio Item">
-                          <div class="overlay">
-                            <a href="#" class="expand"><i class="fa fa-search"></i><br>View More</a>
-                            <a class="close-overlay hidden">x</a>
-                          </div>
-                        </div>
-                      </div>
-                      <h2>Creative Ideas</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="col-md-4 wp4">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/portfolio-01.jpg" alt="Portfolio Item">
-                          <div class="overlay">
-                            <a href="#" class="expand"><i class="fa fa-search"></i><br>View More</a>
-                            <a class="close-overlay hidden">x</a>
-                          </div>
-                        </div>
-                      </div>
-                      <h2>Creative Minds</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                    </div>
-                    <div class="col-md-4 wp4 delay-05s">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/portfolio-02.jpg" alt="Portfolio Item">
-                          <div class="overlay">
-                            <a href="#" class="expand"><i class="fa fa-search"></i><br>View More</a>
-                            <a class="close-overlay hidden">x</a>
-                          </div>
-                        </div>
-                      </div>
-                      <h2>Creative Hearts</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                    </div>
-                    <div class="col-md-4 wp4 delay-1s">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/portfolio-03.jpg" alt="Portfolio Item">
-                          <div class="overlay">
-                            <a href="#" class="expand"><i class="fa fa-search"></i><br>View More</a>
-                            <a class="close-overlay hidden">x</a>
-                          </div>
-                        </div>
-                      </div>
-                      <h2>Creative Ideas</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div class="ignite-cta text-center">
+        <section class="features text-center section-padding" id="responsive">
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <a href="#" class="ignite-btn">Ignite Your Passion</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <section class="team text-center section-padding" id="team">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <h1 class="arrow">We're a team that adore what we do</h1>
-              </div>
-            </div>
-            <div class="row">
-              <div class="team-wrapper">
-                <div id="teamSlider">
-                  <ul class="slides">
-                    <li>
-                      <div class="col-md-4 wp5">
-                        <img src="img/team-01.png" alt="Team Member">
-                        <h2>Jon Snow</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                        <div class="social">
-                          <ul class="social-buttons">
-                            <li><a href="#" class="social-btn"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-envelope"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      
-                      <div class="col-md-4 wp5 delay-05s">
-                        <img src="img/team-02.png" alt="Team Member">
-                        <h2>Cersei Lannister</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                        <div class="social">
-                          <ul class="social-buttons">
-                            <li><a href="#" class="social-btn"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-envelope"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-md-4 wp5 delay-1s">
-                        <img src="img/team-03.png" alt="Team Member">
-                        <h2>Jamie Lannister</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                        <div class="social">
-                          <ul class="social-buttons">
-                            <li><a href="#" class="social-btn"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-envelope"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="col-md-4 wp5">
-                        <img src="img/team-01.png" alt="Team Member">
-                        <h2>Jon Snow</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                        <div class="social">
-                          <ul class="social-buttons">
-                            <li><a href="#" class="social-btn"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-envelope"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-md-4 wp5 delay-05s">
-                        <img src="img/team-02.png" alt="Team Member">
-                        <h2>Cersei Lannister</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                        <div class="social">
-                          <ul class="social-buttons">
-                            <li><a href="#" class="social-btn"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-envelope"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-md-4 wp5 delay-1s">
-                        <img src="img/team-03.png" alt="Team Member">
-                        <h2>Jamie Lannister</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies nulla non metus pulvinar imperdiet. Praesent non adipiscing libero.</p>
-                        <div class="social">
-                          <ul class="social-buttons">
-                            <li><a href="#" class="social-btn"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="social-btn"><i class="fa fa-envelope"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                <div class="features-wrapper">
+                    <div class="container">
+                      <form id="contact" action="" method="post">
+                        <h3>Write feedback</h3>
+                        <h4></h4>
+                        <fieldset>
+                          <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+                        </fieldset>
+                        <fieldset>
+                          <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                        </fieldset>
+                        <fieldset>
+                          <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+                        </fieldset>
+                        <fieldset>
+                          <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+                        </fieldset>
+                        <fieldset>
+                          <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+                        </fieldset>
+                        <fieldset>
+                          <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                        </fieldset>
+
+                      </form>
+                    </div>
+                  <div class="clearfix"></div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="subscribe text-center">
-          <div class="container">
-            <h1><i class="fa fa-paper-plane"></i><span>Subscribe to stay in the loop</span></h1>
-            <form action="#">
-              <input type="text" name="" value="" placeholder="" required>
-              <input type="submit" name="" value="Send">
-            </form>
-          </div>
-        </section>
-        <section class="dark-bg text-center section-padding contact-wrap" id="contact">
-          <a href="#top" class="up-btn"><i class="fa fa-chevron-up"></i></a>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <h1 class="arrow">Drop us a line</h1>
-              </div>
-            </div>
-            <div class="row contact-details">
-              <div class="col-md-4">
-                <div class="light-box box-hover">
-                  <h2><i class="fa fa-map-marker"></i><span>Address</span></h2>
-                  <p>Level 6, 23 Pitt St, Sydney</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="light-box box-hover">
-                  <h2><i class="fa fa-mobile"></i><span>Phone</span></h2>
-                  <p>+61 9 211 3747</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="light-box box-hover">
-                  <h2><i class="fa fa-paper-plane"></i><span>Email</span></h2>
-                  <p><a href="#">hey@halcyondays.com</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <ul class="social-buttons">
-                  <li><a href="#" class="social-btn"><i class="fa fa-dribbble"></i></a></li>
-                  <li><a href="#" class="social-btn"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="social-btn"><i class="fa fa-envelope"></i></a></li>
-                </ul>
               </div>
             </div>
           </div>
         </section>
         <footer>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <ul class="legals">
-                  <li><a href="#">Terms &amp; Conditions</a></li>
-                  <li><a href="#">Legals</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 credit">
-                <p>Designed &amp; Developed by <a href="http://www.peterfinlan.com/">Peter Finlan</a> exclusively for <a href="http://tympanus.net/codrops/"><em>Codrops</em></a></p>
-              </div>
-            </div>
-          </div>
         </footer>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
