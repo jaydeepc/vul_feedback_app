@@ -60,7 +60,7 @@ def writeblog():
         cursor.execute(query)
     except Exception as ex:
         raise Exception(query, ex)
-    return render_template('index.html')
+    return render_template('success_index.html')
 
 if __name__ == "__main__":
     app.run()
