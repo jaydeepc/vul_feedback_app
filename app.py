@@ -58,8 +58,10 @@ def writeblog():
     query = "insert into reviews (review_sender, review_body) values ('{0}', '{1}');".format(_review_sender, _review_body)
     try:
         cursor.execute(query)
-    except Exception as ex:
-        raise Exception(query, ex)
+        conn.commit()
+    except:
+        conn.rollback()
+    conn.close()
     return render_template('success_index.html')
 
 if __name__ == "__main__":

@@ -40,7 +40,7 @@ CREATE TABLE `reviews` (
   `review_sender` varchar(45) DEFAULT NULL,
   `review_body` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`review_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
