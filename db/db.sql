@@ -37,8 +37,10 @@ CREATE TABLE `tbl_user` (
 
 CREATE TABLE `reviews` (
   `review_id` int(11) NOT NULL AUTO_INCREMENT,
-  `review_sender` varchar(45) DEFAULT NULL,
+  `review_hotel` varchar(45) DEFAULT NULL,
+  `review_city` varchar(45) DEFAULT NULL,
   `review_body` varchar(45) DEFAULT NULL,
+  `review_rating` int(10) DEFAULT NULL,
   PRIMARY KEY (`review_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

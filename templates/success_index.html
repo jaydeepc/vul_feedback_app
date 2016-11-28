@@ -165,12 +165,19 @@
                     <div class="container">
                       <form id="contact" action="writereview" method="POST">
                         <h4 style="color: #009900; font-size:16px">Review submitted successfully!</h4>
-                        <h3>Write A Review</h3>
+                          <h3>Write A Review</h3>
+                        <h4></h4>
                         <fieldset>
-                          <input name="name" id="name" placeholder="Your name" type="text" tabindex="1" required autofocus>
+                          <input name="hotel" id="hotel" placeholder="Tell us the hotel's name" type="text" tabindex="1" required autofocus>
                         </fieldset>
                         <fieldset>
-                          <textarea name = "body" id="body" placeholder="Type your message here...." tabindex="5" required></textarea>
+                          <input name="city" id="city" placeholder="Which City?" type="text" tabindex="2" required>
+                        </fieldset>
+                        <fieldset>
+                          <textarea name="review" id="review" placeholder="Type your message here...." tabindex="3" required></textarea>
+                        </fieldset>
+                        <fieldset>
+                          <input name="rating" id="rating" placeholder="Rate on a scale of 1 to 10" type="number" min="1" max="10" tabindex="4" required>
                         </fieldset>
                         <fieldset>
                           <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>

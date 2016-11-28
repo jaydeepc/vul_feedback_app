@@ -50,12 +50,14 @@ def login():
 
 @app.route('/writereview',methods=['POST'])
 def writeblog():
-    _review_sender = request.form['name']
-    _review_body = request.form['body']
+    _review_hotel = request.form['hotel']
+    _review_city = request.form['city']
+    _review_body = request.form['review']
+    _review_rating = request.form['rating']
 
     conn = mysql.connect()
     cursor = conn.cursor()
-    query = "insert into reviews (review_sender, review_body) values ('{0}', '{1}');".format(_review_sender, _review_body)
+    query = "insert into reviews (review_hotel,  review_city, review_body, review_rating) values ('{0}', '{1}', '{2}', '{3}');".format(_review_hotel, _review_city, _review_body, _review_rating)
     try:
         cursor.execute(query)
         conn.commit()
