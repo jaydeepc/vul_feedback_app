@@ -18,19 +18,28 @@
 --
 -- Table structure for table `tbl_user`
 --
-
+DROP DATABASE IF EXISTS Feedback;
 CREATE Database Feedback;
 USE Feedback;
 
 DROP TABLE IF EXISTS `tbl_user`;
+DROP TABLE IF EXISTS `reviews`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `tbl_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) DEFAULT NULL,
   `user_username` varchar(45) DEFAULT NULL,
   `user_password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `reviews` (
+  `review_id` int(11) NOT NULL AUTO_INCREMENT,
+  `review_sender` varchar(45) DEFAULT NULL,
+  `review_body` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`review_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

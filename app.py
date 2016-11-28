@@ -55,11 +55,12 @@ def writeblog():
 
     conn = mysql.connect()
     cursor = conn.cursor()
-    query = "insert into reviews (review_sender, review_body) values (''{0}'', ''{1}'');".format(_review_sender, _review_body)
+    query = "insert into reviews (review_sender, review_body) values ('{0}', '{1}');".format(_review_sender, _review_body)
     try:
         cursor.execute(query)
     except Exception as ex:
         raise Exception(query, ex)
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run()
