@@ -10,7 +10,8 @@ mysql = MySQL()
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'Feedback'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = 'db_server'
+app.config['MYSQL_PORT'] = '3306'
 mysql.init_app(app)
 
 
@@ -66,4 +67,4 @@ def writeblog():
     return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)

@@ -1,17 +1,20 @@
 db:
+  container_name: db_server
   image: mysql
   ports:
     - 3306:3306
+  expose:
+    - 3306
   environment:
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    MYSQL_ROOT_PASSWORD: ""
   volumes:
-   - ..:/home
-  command: bash -c "cd home/python_vul_app && service mysql start && mysql < db/db.sql"
+   - ../python_vul_app:/home
+  command: bash -c "cd home && service mysql start && mysql < db/db.sql && ping localhost"
 
 myapp:
+  container_name: app_server
   build: .
   ports:
     - 5000:5000
   links:
-   - db
+   - db:127.0.0.1
