@@ -99,3 +99,12 @@ fieldset {
   outline: 0;
   border: 1px solid #aaa;
 }
+
+#success_msg{
+    display: none;
+}
+
+#rating {
+    margin-right: 1051px;
+    width: 18%;
+}

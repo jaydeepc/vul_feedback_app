@@ -18,7 +18,6 @@ mysql.init_app(app)
 def main():
     return render_template('login.html')
 
-
 @app.errorhandler(500)
 def handle_internal_server_error(error):
     return str(error)
@@ -64,7 +63,7 @@ def writeblog():
     except:
         conn.rollback()
     conn.close()
-    return render_template('success_index.html')
+    return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')

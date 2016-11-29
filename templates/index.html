@@ -20,6 +20,20 @@
             window.scrollTo(0,0);
         });
     </script>
+    <script language="javascript" type="text/javascript">
+        $(function() {
+           $("form").submit(function(e) {
+              $.post($(this).attr("action"), // url
+              $(this).serialize(), // data
+              function (data) { //success callback function
+                  $("#success_msg").css("display", "block");
+              }).error(function () {
+                  console.log("There are errors");
+               });
+                 e.preventDefault();
+           });
+        });
+    </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -164,6 +178,7 @@
                 <div class="features-wrapper">
                     <div class="container">
                       <form id="contact" action="writereview" method="POST">
+                        <div style="color: #009900; font-size:16px" id="success_msg">Review submitted successfully!</div>
                         <h3>Write A Review</h3>
                         <h4></h4>
                         <fieldset>

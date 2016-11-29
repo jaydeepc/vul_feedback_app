@@ -1,25 +1,17 @@
-#db:
-#  image: mysql
-#  ports:
-#    - "3306:3306"
-#
-#  environment:
-#
-#    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-#    MYSQL_ROOT_PASSWORD: ""
-#
-#  volumes:
-#   - ..:/home
-#  command: bash -c "cd home/python_vul_app && service mysql start && mysql < db/db.sql"
-
-app:
-
+db:
+  image: mysql
+  ports:
+    - 3306:3306
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_ROOT_PASSWORD: ""
   volumes:
    - ..:/home
-  build: .
-  command: bash -c "cd home/python_vul_app && pip install -r requirements.txt && python app.py"
-  environment:
-  - no_proxy=localhost
-  ports:
-    - "5000:5000"
+  command: bash -c "cd home/python_vul_app && service mysql start && mysql < db/db.sql"
 
+myapp:
+  build: .
+  ports:
+    - 5000:5000
+  links:
+   - db
