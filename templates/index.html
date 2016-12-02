@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/searchbox.css') }}">
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).load(function () {
             window.scrollTo(0,0);
         });
     </script>
@@ -92,8 +92,8 @@
               <div class="col-md-12">
                 <h1 class="arrow">Search reviews by other users</h1>
                 <div class="features-wrapper">
-                      <form class="form-wrapper cf">
-                          <input type="text" placeholder="Search here..." required>
+                      <form class="form-wrapper cf" action="search" method="POST">
+                          <input type="text" name="search_input" id="search_input" placeholder="Search here..." required>
                             <button type="submit">Search</button>
                       </form>
                       <table>
@@ -106,64 +106,16 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td><strong>Taj Bengal</strong></td>
-                            <td>Kolkata</td>
-                            <td>I wish they had some bengali cuisine!</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Ulto Dangar Shoja Hotel</strong></td>
-                            <td>Kolkata</td>
-                            <td>Awesome place! if you are in Kolkata, this is your place</td>
-                            <td>5</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Joy Maa Kali, Bengal hotel</strong></td>
-                            <td>Kolkata</td>
-                            <td>Well, stay only if you are from Matri Bhokto Ramproshad family!</td>
-                            <td>2</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Bhai giri hotel</strong></td>
-                            <td>Mumbai</td>
-                            <td>Best part of this hotel is their welcome drink! Cutting-Chaay with Batata bada!</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Bhook laagli</strong></td>
-                            <td>Mumbai</td>
-                            <td>Well they are mainly a fast food place! But yes, if you fall sick, while eating you can go to the hospital next door</td>
-                            <td>3</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Tujhya Aaicha's Hotel</strong></td>
-                            <td>Mumbai</td>
-                            <td>Amazing place with a Bar, only open on RaviBar!</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Nakka Muka</strong></td>
-                            <td>Chennai</td>
-                            <td>So good! My nakka was always smelling the good food smell from their kitchen and Muka was always busy!</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Meesai Murukku</strong></td>
-                            <td>Chennai</td>
-                            <td>This is the king of all the hotels in chennai. A must if you are here!</td>
-                            <td>5</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Kakkoos</strong></td>
-                            <td>Chennai</td>
-                            <td>Do you even need a review? Look at the name, never ever go here!</td>
-                            <td>1</td>
-                          </tr>
+                          {% for item in items %}
+                            <tr>
+                                <td><strong>{{item[0]}}</strong></td>
+                                <td>{{item[1]}}</td>
+                                <td>{{item[2]}}</td>
+                                <td>{{item[3]}}</td>
+                            </tr>
+                          {% endfor %}
                         </tbody>
                       </table>
-
-
 
                   <div class="clearfix"></div>
                 </div>

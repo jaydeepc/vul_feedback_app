@@ -1,5 +1,6 @@
 db:
   container_name: db_server
+  hostname: db_server
   image: mysql
   ports:
     - 3306:3306
@@ -11,10 +12,11 @@ db:
    - ../python_vul_app:/home
   command: bash -c "cd home && service mysql start && mysql < db/db.sql && ping localhost"
 
+
 myapp:
   container_name: app_server
   build: .
   ports:
     - 5000:5000
   links:
-   - db:127.0.0.1
+   - db:db_server
