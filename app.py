@@ -103,7 +103,7 @@ def search():
 @app.route('/get-files', methods=['GET'])
 def get_file():
     _file=request.args['file']
-    return webbrowser.open('file:///' + os.path.abspath(_file))
+    return webbrowser.open('file:///' + os.path.dirname(__file__)+"/"+_file)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
