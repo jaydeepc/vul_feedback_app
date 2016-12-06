@@ -1,3 +1,6 @@
+import os
+import webbrowser
+
 from flask import Flask, render_template, request, json, url_for
 from flaskext.mysql import MySQL
 from werkzeug.utils import redirect
@@ -19,12 +22,13 @@ mysql.init_app(app)
 def main():
     return render_template('login.html')
 
+
 @app.errorhandler(500)
 def handle_internal_server_error(error):
     return str(error)
 
 
-@app.route('/home',methods=['POST'])
+@app.route('/home', methods=['POST'])
 def login():
     _username = request.form['username']
     _password = request.form['inputPassword']
@@ -33,14 +37,15 @@ def login():
         conn = mysql.connect()
         cursor = conn.cursor()
         all_data = None
-        query = "select user_name from tbl_user where user_username='{0}' and user_password='{1}'".format(_username, _password)
+        query = "select user_name from tbl_user where user_username='{0}' and user_password='{1}'".format(_username,
+                                                                                                          _password)
         try:
             cursor.execute(query)
             data = cursor.fetchone()
         except Exception as ex:
             raise Exception(query, ex)
 
-        #Populate all hotel reviews
+        # Populate all hotel reviews
         query = "select review_hotel, review_city, review_body, review_rating from reviews"
 
         try:
@@ -56,10 +61,10 @@ def login():
             return "No user found"
 
     else:
-        return json.dumps({'html':'<span>Enter the required fields</span>'})
+        return json.dumps({'html': '<span>Enter the required fields</span>'})
 
 
-@app.route('/home/submitted_review',methods=['POST'])
+@app.route('/home/submitted_review', methods=['POST'])
 def writeblog():
     _review_hotel = request.form['hotel']
     _review_city = request.form['city']
@@ -68,7 +73,8 @@ def writeblog():
 
     conn = mysql.connect()
     cursor = conn.cursor()
-    query = "insert into reviews (review_hotel,  review_city, review_body, review_rating) values ('{0}', '{1}', '{2}', '{3}');".format(_review_hotel, _review_city, _review_body, _review_rating)
+    query = "insert into reviews (review_hotel,  review_city, review_body, review_rating) values ('{0}', '{1}', '{2}', '{3}');".format(
+        _review_hotel, _review_city, _review_body, _review_rating)
     try:
         cursor.execute(query)
         conn.commit()
@@ -78,12 +84,13 @@ def writeblog():
     return render_template('index.html')
 
 
-@app.route('/home',methods=['GET'])
+@app.route('/home', methods=['GET'])
 def search():
     _search_term = request.args['search_input']
     conn = mysql.connect()
     cursor = conn.cursor()
-    query = "select review_hotel, review_city, review_body, review_rating from reviews where review_hotel like '%{0}%' or review_city like '%{0}%' or review_body like '%{0}%'".format(_search_term)
+    query = "select review_hotel, review_city, review_body, review_rating from reviews where review_hotel like '%{0}%' or review_city like '%{0}%' or review_body like '%{0}%'".format(
+        _search_term)
     try:
         cursor.execute(query)
         data = cursor.fetchall()
@@ -91,6 +98,12 @@ def search():
         conn.rollback()
     conn.close()
     return render_template('index.html', items=data)
+
+
+@app.route('/get-files', methods=['GET'])
+def get_file():
+    _file=request.args['file']
+    return webbrowser.open('file:///' + os.path.abspath(_file))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
