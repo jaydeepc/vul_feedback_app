@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, json
+from flask import Flask, render_template, request, json, url_for
 from flaskext.mysql import MySQL
-
+from werkzeug.utils import redirect
 
 app = Flask(__name__)
 
@@ -24,7 +24,7 @@ def handle_internal_server_error(error):
     return str(error)
 
 
-@app.route('/login',methods=['POST'])
+@app.route('/home',methods=['POST'])
 def login():
     _username = request.form['username']
     _password = request.form['inputPassword']
@@ -32,6 +32,7 @@ def login():
     if _username and _password:
         conn = mysql.connect()
         cursor = conn.cursor()
+        all_data = None
         query = "select user_name from tbl_user where user_username='{0}' and user_password='{1}'".format(_username, _password)
         try:
             cursor.execute(query)
@@ -39,8 +40,18 @@ def login():
         except Exception as ex:
             raise Exception(query, ex)
 
+        #Populate all hotel reviews
+        query = "select review_hotel, review_city, review_body, review_rating from reviews"
+
+        try:
+            cursor.execute(query)
+            all_data = cursor.fetchall()
+        except:
+            conn.rollback()
+        conn.close()
+
         if data is not None:
-            return render_template('index.html')
+            return render_template('index.html', items=all_data)
         else:
             return "No user found"
 
@@ -48,7 +59,7 @@ def login():
         return json.dumps({'html':'<span>Enter the required fields</span>'})
 
 
-@app.route('/writereview',methods=['POST'])
+@app.route('/home/submitted_review',methods=['POST'])
 def writeblog():
     _review_hotel = request.form['hotel']
     _review_city = request.form['city']
@@ -67,9 +78,9 @@ def writeblog():
     return render_template('index.html')
 
 
-@app.route('/search',methods=['POST'])
+@app.route('/home',methods=['GET'])
 def search():
-    _search_term = request.form['search_input']
+    _search_term = request.args['search_input']
     conn = mysql.connect()
     cursor = conn.cursor()
     query = "select review_hotel, review_city, review_body, review_rating from reviews where review_hotel like '%{0}%' or review_city like '%{0}%' or review_body like '%{0}%'".format(_search_term)
@@ -80,8 +91,6 @@ def search():
         conn.rollback()
     conn.close()
     return render_template('index.html', items=data)
-
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

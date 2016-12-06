@@ -16,9 +16,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/searchbox.css') }}">
     <script type="text/javascript">
-        $(document).load(function () {
-            window.scrollTo(0,0);
-        });
+        window.onload = function() {
+            // short timeout
+            setTimeout(function() {
+                $(document.body).scrollTop(0);
+            }, 15);
+        };
     </script>
     <script language="javascript" type="text/javascript">
         $(function() {
@@ -92,9 +95,9 @@
               <div class="col-md-12">
                 <h1 class="arrow">Search reviews by other users</h1>
                 <div class="features-wrapper">
-                      <form class="form-wrapper cf" action="search" method="POST">
+                      <form class="form-wrapper cf">
                           <input type="text" name="search_input" id="search_input" placeholder="Search here..." required>
-                            <button type="submit">Search</button>
+                            <button onclick="location.href='/home?search_input='+document.getElementById('search_input').value;">Search</button>
                       </form>
                       <table>
                         <thead>
@@ -129,7 +132,7 @@
               <div class="col-md-12">
                 <div class="features-wrapper">
                     <div class="container">
-                      <form id="contact" action="writereview" method="POST">
+                      <form id="contact" action="/home/submitted_review" method="POST">
                         <div style="color: #009900; font-size:16px" id="success_msg">Review submitted successfully!</div>
                         <h3>Write A Review</h3>
                         <h4></h4>
