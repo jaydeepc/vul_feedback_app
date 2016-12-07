@@ -8,10 +8,9 @@ db:
     - 3306
   environment:
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: 'Feedback'
   volumes:
-   - ../python_vul_app:/home
-  command: bash -c "cd home && service mysql start && mysql < db/db.sql && ping localhost"
-
+   - ../vul_feedback_app/db:/docker-entrypoint-initdb.d
 
 myapp:
   container_name: app_server
@@ -19,4 +18,4 @@ myapp:
   ports:
     - 5000:5000
   links:
-   - db:db_server
+    - 'db:db_server'

@@ -18,8 +18,11 @@
 --
 -- Table structure for table `tbl_user`
 --
-DROP DATABASE IF EXISTS Feedback;
-CREATE Database Feedback;
+-- DROP DATABASE IF EXISTS Feedback;
+-- CREATE Database Feedback;
+
+-- GRANT ALL ON *.* to user@'%';
+
 USE Feedback;
 
 DROP TABLE IF EXISTS `tbl_user`;
