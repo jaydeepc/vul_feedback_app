@@ -10,7 +10,7 @@ db:
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     MYSQL_DATABASE: 'Feedback'
   volumes:
-   - ../python_vul_app/db:/docker-entrypoint-initdb.d
+   - ../vul_feedback_app/db:/docker-entrypoint-initdb.d
 
 myapp:
   container_name: app_server
