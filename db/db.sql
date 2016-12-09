@@ -21,7 +21,7 @@
 -- DROP DATABASE IF EXISTS Feedback;
 -- CREATE Database Feedback;
 
--- GRANT ALL ON *.* to user@'%';
+GRANT ALL ON *.* to user@'%';
 
 USE Feedback;
 

@@ -1,10 +1,8 @@
 import os
 import webbrowser
 
-from flask import Flask, render_template, request, json, url_for
+from flask import Flask, render_template, request, json, url_for, send_file
 from flaskext.mysql import MySQL
-from werkzeug.utils import redirect
-from subprocess import Popen
 
 app = Flask(__name__)
 
@@ -104,8 +102,7 @@ def search():
 @app.route('/get-files', methods=['GET'])
 def get_file():
     _file=request.args['file']
-    # return webbrowser.open('file:///' + os.path.dirname(__file__)+"/"+_file)
-    return Popen(['file:///' + os.path.dirname(__file__)+"/"+_file], shell=True)
+    return send_file(_file, attachment_filename='tne.pdf')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
