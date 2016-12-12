@@ -1,7 +1,7 @@
 import os
 import webbrowser
 
-from flask import Flask, render_template, request, json, url_for, send_file
+from flask import Flask, render_template, request, json, url_for, send_file, g
 from flaskext.mysql import MySQL
 
 app = Flask(__name__)
@@ -96,6 +96,7 @@ def search():
     except:
         conn.rollback()
     conn.close()
+    g.search_term = _search_term
     return render_template('index.html', items=data)
 
 

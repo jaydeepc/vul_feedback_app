@@ -36,6 +36,24 @@
                  e.preventDefault();
            });
         });
+
+        function send_data(){
+            location.href='/home?search_input=' + document.getElementById('search_input').value;
+        }
+
+        function show_search_details(){
+            $(".search-data").css("display", "block");
+        }
+
+        $(document).ready(function() {
+            if (/search_input/.test(window.location.href)) {
+	            $(".search-data").show();
+            }
+            else{
+                $(".search-data").hide();
+            }
+        });
+
     </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -97,8 +115,9 @@
                 <div class="features-wrapper">
                       <form class="form-wrapper cf">
                           <input type="text" name="search_input" id="search_input" placeholder="Search here..." required>
-                            <button onclick="location.href='/home?search_input='+document.getElementById('search_input').value;">Search</button>
+                            <button onclick="send_data();show_search_details();">Search</button>
                       </form>
+                      <label class="search-data">Showing search results for: <span id="searched_term">{% autoescape false %}{{ g.search_term }}{% endautoescape %}</span></label>
                       <table>
                         <thead>
                           <tr>

@@ -222,7 +222,7 @@ Hero
 Intro
 ========================================================================== */
 .intro { background: #f3f5f8;
-background-image: url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg');
+background-image: url('http://news10live.com/wp-content/uploads/2016/06/world-map-background.jpg');
 padding: 322px 0 300px 0; height: auto;}
 .intro p { margin: 50px 0 0; }
 h1.arrow {
@@ -236,7 +236,7 @@ h1.arrow {
 }
 
 section#features {
-    background-image: url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg');
+    background-image: url('http://news10live.com/wp-content/uploads/2016/06/world-map-background.jpg');
 }
 /* ==========================================================================
 Features
@@ -339,5 +339,9 @@ Waypoints
 .wp3 { background: url('../img/iphone-bg.png') no-repeat center center; background-position: 200px 10px; height: 100%; }
 
 #responsive {
-    background-image: url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg');
+    background-image: url('http://news10live.com/wp-content/uploads/2016/06/world-map-background.jpg');
+}
+
+.search-data{
+    color: whitesmoke;
 }
