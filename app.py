@@ -45,13 +45,7 @@ def login():
             raise Exception(query, ex)
 
         # Populate all hotel reviews
-        query = "select review_hotel, review_city, review_body, review_rating from reviews"
-
-        try:
-            cursor.execute(query)
-            all_data = cursor.fetchall()
-        except:
-            conn.rollback()
+        all_data = fetch_reviews(conn, cursor)
         conn.close()
 
         if data is not None:
@@ -61,6 +55,16 @@ def login():
 
     else:
         return json.dumps({'html': '<span>Enter the required fields</span>'})
+
+
+def fetch_reviews(conn, cursor):
+    query = "select review_hotel, review_city, review_body, review_rating from reviews"
+    try:
+        cursor.execute(query)
+        all_data = cursor.fetchall()
+    except:
+        conn.rollback()
+    return all_data
 
 
 @app.route('/home/submitted_review', methods=['POST'])
@@ -88,7 +92,11 @@ def search():
     try:
         _search_term = request.args['search_input']
     except:
-        return render_template('index.html')
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        all_data = fetch_reviews(conn, cursor)
+        conn.close()
+        return render_template('index.html', items=all_data)
     conn = mysql.connect()
     cursor = conn.cursor()
     query = "select review_hotel, review_city, review_body, review_rating from reviews where review_hotel like '%{0}%' or review_city like '%{0}%' or review_body like '%{0}%'".format(
