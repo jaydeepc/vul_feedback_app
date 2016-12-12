@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,6 +22,7 @@
                 $(document.body).scrollTop(0);
             }, 15);
         };
+
     </script>
     <script language="javascript" type="text/javascript">
         $(function() {
@@ -54,143 +55,162 @@
             }
         });
 
+
     </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-      </head>
-      <body id="top">
-        <header id="home">
-          <nav>
-            <div class="container-fluid">
-              <div class="row">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="top">
+<header id="home">
+    <nav>
+        <div class="container-fluid">
+            <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
-                  <nav class="pull">
-                    <ul class="top-nav">
-                      <li><a href="#intro">About Us <span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
-                      <li><a href="#features">Search Feedback <span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
-                      <li><a href="#responsive">Write Feedback <span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
-                    </ul>
-                  </nav>
+                    <nav class="pull">
+                        <ul class="top-nav">
+                            <li><a href="#intro">About Us <span class="indicator"><i
+                                    class="fa fa-angle-right"></i></span></a></li>
+                            <li><a href="#features">Search Feedback <span class="indicator"><i
+                                    class="fa fa-angle-right"></i></span></a></li>
+                            <li><a href="#responsive">Write Feedback <span class="indicator"><i
+                                    class="fa fa-angle-right"></i></span></a></li>
+                        </ul>
+                    </nav>
                 </div>
-              </div>
             </div>
-          </nav>
-          <section class="hero" id="hero">
-            <div class="container">
-              <div class="row">
+        </div>
+    </nav>
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="row">
                 <div class="col-md-12 text-right navicon">
-                  <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
+                    <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
                 </div>
-              </div>
-              <div class="row">
+            </div>
+            <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center inner">
-                  <h1 class="animated fadeInDown">Your Feedback<span> Makes us better</span></h1>
-                  <p class="animated fadeInUp delay-05s"><em>Powered by ThoughtWorks</em></p>
+                    <h1 class="animated fadeInDown">Your Feedback<span> Makes us better</span></h1>
+                    <p class="animated fadeInUp delay-05s"><em>Powered by ThoughtWorks</em></p>
                 </div>
-              </div>
             </div>
-          </section>
-        </header>
-        <section class="intro text-center section-padding" id="intro">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 wp1">
+        </div>
+    </section>
+</header>
+<section class="intro text-center section-padding" id="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 wp1">
                 <h1 class="arrow">Who are we?</h1>
-                <p>Know better, book better and go better on the world's largest travel site. Browse over 385 million candid reviews, opinions, and photos of hotels, restaurants, and more - all by travellers like you. We are a popular forum with advice about virtually every destination, and more.
-                  No wonder so many travellers make Us their first stop before every trip.</p>
-              </div>
+                <p>Know better, book better and go better on the world's largest travel site. Browse over 385 million
+                    candid reviews, opinions, and photos of hotels, restaurants, and more - all by travellers like you.
+                    We are a popular forum with advice about virtually every destination, and more.
+                    No wonder so many travellers make Us their first stop before every trip.</p>
             </div>
-          </div>
-        </section>
-        <section class="features text-center section-padding" id="features">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
+        </div>
+    </div>
+</section>
+<section class="features text-center section-padding" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
                 <h1 class="arrow">Search reviews by other users</h1>
                 <div class="features-wrapper">
-                      <form class="form-wrapper cf">
-                          <input type="text" name="search_input" id="search_input" placeholder="Search here..." required>
-                            <button onclick="send_data();show_search_details();">Search</button>
-                      </form>
-                      <label class="search-data">Showing search results for: <span id="searched_term">{% autoescape false %}{{ g.search_term }}{% endautoescape %}</span></label>
-                      <table>
+                    <form class="form-wrapper cf">
+                        <input type="text" name="search_input" id="search_input" placeholder="Search here..." required>
+                        <button onclick="send_data();show_search_details();">Search</button>
+                    </form>
+                    <label class="search-data">Showing search results for: <span id="searched_term">{% autoescape false %}{{ g.search_term }}{% endautoescape %}</span></label>
+                    <table>
                         <thead>
-                          <tr>
+                        <tr>
                             <th>Hotel Name</th>
                             <th>City</th>
                             <th>Review</th>
-                            <th>Average Rating</th>
-                          </tr>
+                            <th>Average Rating
+                                <a href="#">
+                                    <span class="fa fa-refresh" aria-hidden="true"
+                                          style="font-size:20px;float:right"></span>
+                                </a></th>
+                        </tr>
                         </thead>
                         <tbody>
-                          {% for item in items %}
-                            {% autoescape false %}
-                            <tr>
-                                <td>{{item[0]}}</td>
-                                <td>{{item[1]}}</td>
-                                <td>{{item[2]}}</td>
-                                <td>{{item[3]}}</td>
-                            </tr>
-                            {% endautoescape %}
-                          {% endfor %}
+                        {% for item in items %}
+                        {% autoescape false %}
+                        <tr>
+                            <td>{{item[0]}}</td>
+                            <td>{{item[1]}}</td>
+                            <td>{{item[2]}}</td>
+                            <td>{{item[3]}}</td>
+                        </tr>
+                        {% endautoescape %}
+                        {% endfor %}
                         </tbody>
-                      </table>
+                    </table>
 
-                  <div class="clearfix"></div>
+                    <div class="clearfix"></div>
                 </div>
-              </div>
             </div>
-          </div>
-        </section>
-        <section class="features text-center section-padding" id="responsive">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
+        </div>
+    </div>
+</section>
+<section class="features text-center section-padding" id="responsive">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="features-wrapper">
                     <div class="container">
-                      <form id="contact" action="/home/submitted_review" method="POST">
-                        <div style="color: #009900; font-size:16px" id="success_msg">Review submitted successfully!</div>
-                        <h3>Write A Review
-                            <a class="fa fa-info-circle" href="/get-files?file=static/terms.pdf" target="_blank" aria-hidden="true" style="font-size:20px;color:darkslategrey"></a>
-                        </h3>
-                        <fieldset>
-                          <input name="hotel" id="hotel" placeholder="Tell us the hotel's name" type="text" tabindex="1" required autofocus>
-                        </fieldset>
-                        <fieldset>
-                          <input name="city" id="city" placeholder="Which City?" type="text" tabindex="2" required>
-                        </fieldset>
-                        <fieldset>
-                          <textarea name="review" id="review" placeholder="Type your message here...." tabindex="3" required></textarea>
-                        </fieldset>
-                        <fieldset>
-                          <input name="rating" id="rating" placeholder="Rate on a scale of 1 to 10" type="number" min="1" max="10" tabindex="4" required>
-</fieldset>
-                        <fieldset>
-                          <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-                        </fieldset>
+                        <form id="contact" action="/home/submitted_review" method="POST">
+                            <div style="color: #009900; font-size:16px" id="success_msg">Review submitted
+                                successfully!
+                            </div>
+                            <h3>Write A Review
+                                <a class="fa fa-info-circle" href="/get-files?file=static/terms.pdf" target="_blank"
+                                   aria-hidden="true" style="font-size:20px;color:darkslategrey"></a>
+                            </h3>
+                            <fieldset>
+                                <input name="hotel" id="hotel" placeholder="Tell us the hotel's name" type="text"
+                                       tabindex="1" required autofocus>
+                            </fieldset>
+                            <fieldset>
+                                <input name="city" id="city" placeholder="Which City?" type="text" tabindex="2"
+                                       required>
+                            </fieldset>
+                            <fieldset>
+                                <textarea name="review" id="review" placeholder="Type your message here...."
+                                          tabindex="3" required></textarea>
+                            </fieldset>
+                            <fieldset>
+                                <input name="rating" id="rating" placeholder="Rate on a scale of 1 to 10" type="number"
+                                       min="1" max="10" tabindex="4" required>
+                            </fieldset>
+                            <fieldset>
+                                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">
+                                    Submit
+                                </button>
+                            </fieldset>
 
-                      </form>
+                        </form>
                     </div>
-                  <div class="clearfix"></div>
+                    <div class="clearfix"></div>
                 </div>
-              </div>
             </div>
-          </div>
-        </section>
-        <footer>
-        </footer>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script type = "text/javascript" src = "{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
-        <script type = "text/javascript" src = "{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-        <script type = "text/javascript" src = "{{ url_for('static', filename='js/scripts.js') }}"></script>
-        <script type = "text/javascript" src = "{{ url_for('static', filename='js/jquery.flexslider.js') }}"></script>
-        <script type = "text/javascript" src = "{{ url_for('static', filename='js/modernizr.js') }}"></script>
-      </body>
-    </html>
+        </div>
+    </div>
+</section>
+<footer>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.flexslider.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+</body>
+</html>
