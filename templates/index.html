@@ -131,7 +131,7 @@
                           {% for item in items %}
                             {% autoescape false %}
                             <tr>
-                                <td><strong>{{item[0]}}</strong></td>
+                                <td>{{item[0]}}</td>
                                 <td>{{item[1]}}</td>
                                 <td>{{item[2]}}</td>
                                 <td>{{item[3]}}</td>
@@ -156,7 +156,7 @@
                       <form id="contact" action="/home/submitted_review" method="POST">
                         <div style="color: #009900; font-size:16px" id="success_msg">Review submitted successfully!</div>
                         <h3>Write A Review
-                            <a class="fa fa-info-circle" href="/get-files?file=mybook.pdf" target="_blank" aria-hidden="true" style="font-size:20px;color:darkslategrey"></a>
+                            <a class="fa fa-info-circle" href="/get-files?file=static/terms.pdf" target="_blank" aria-hidden="true" style="font-size:20px;color:darkslategrey"></a>
                         </h3>
                         <fieldset>
                           <input name="hotel" id="hotel" placeholder="Tell us the hotel's name" type="text" tabindex="1" required autofocus>
