@@ -28,12 +28,12 @@ def handle_internal_server_error(error):
     return str(error)
 
 
-@app.route('/home', methods=['GET'])
-def home():
-    if not session.get('logged_in'):
-        return render_template('login.html')
-    else:
-        return render_template('index.html')
+# @app.route('/home', methods=['GET'])
+# def home():
+#     if not session.get('logged_in'):
+#         return render_template('login.html')
+#     else:
+#         return render_template('index.html')
 
 @app.route('/home', methods=['POST'])
 def login():
@@ -98,6 +98,9 @@ def writeblog():
 
 @app.route('/home', methods=['GET'])
 def search():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+
     try:
         _search_term = request.args['search_input']
     except werkzeug.exceptions.BadRequest:
