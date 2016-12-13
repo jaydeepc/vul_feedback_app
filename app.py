@@ -2,7 +2,7 @@ import os
 import webbrowser
 
 import werkzeug
-from flask import Flask, render_template, request, json, url_for, send_file, g
+from flask import Flask, render_template, request, json, session, send_file, g
 from flaskext.mysql import MySQL
 
 app = Flask(__name__)
@@ -28,6 +28,13 @@ def handle_internal_server_error(error):
     return str(error)
 
 
+@app.route('/home', methods=['GET'])
+def home():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return render_template('index.html')
+
 @app.route('/home', methods=['POST'])
 def login():
     _username = request.form['username']
@@ -50,6 +57,7 @@ def login():
         conn.close()
 
         if data is not None:
+            session['logged_in'] = True
             return render_template('index.html', items=all_data)
         else:
             return "No user found"
@@ -112,10 +120,17 @@ def search():
     return render_template('index.html', items=data)
 
 
+@app.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return render_template('login.html')
+
+
 @app.route('/get-files', methods=['GET'])
 def get_file():
     _file=request.args['file']
     return send_file(_file, attachment_filename='tne.pdf')
 
 if __name__ == "__main__":
+    app.secret_key = os.urandom(12)
     app.run(host='0.0.0.0', debug=True)
