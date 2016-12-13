@@ -59,6 +59,14 @@ INSERT INTO `tbl_user` VALUES (1,'Admin','admin','admin'),(2,'Guest','guest','gu
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+LOCK TABLES `reviews` WRITE;
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+insert into reviews(review_hotel, review_city, review_body, review_rating) values ('Aalishaan', 'Kolkata', 'Murg Mussallam is best here', '5'),('Joy maa kali', 'Kolkata', 'Not good for Non maa kali bakhts', '3'), ('Aamchi Mumbai', 'Mumbai', 'Best for weekends', '5'), ('Grand Central', 'Mumbai', 'The best in the city', '5'), ('Delhi 6', 'Delhi', 'Kalmi kabab - you should not miss this', '4'), ('Delhi Darbar', 'Delhi', 'Fast food special', '3'), ('Niruppa da', 'Chennai', 'Best Dosa place', '5'), ('Mesai Muruku', 'Chennai', 'A place for Royal people', '5');
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
