@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/searchbox.css') }}">
     <script type="text/javascript">
-        window.onload = function() {
-            // short timeout
-            setTimeout(function() {
-                $(document.body).scrollTop(0);
-            }, 15);
-        };
+        <!--window.onload = function() {-->
+            <!--// short timeout-->
+            <!--setTimeout(function() {-->
+                <!--$(document.body).scrollTop(0);-->
+            <!--}, 15);-->
+        <!--};-->
 
     </script>
     <script language="javascript" type="text/javascript">
@@ -71,6 +71,13 @@
     <![endif]-->
 </head>
 <body id="top">
+{% if section %}
+<script>
+    $(function() {
+       $("html, body").animate({ scrollTop: $("#{{ section }}").offset().top }, 1000);
+    });
+</script>
+{% endif %}
 <header id="home">
     <nav>
         <div class="container-fluid">
@@ -162,7 +169,7 @@
         </div>
     </div>
 </section>
-<section class="features text-center section-padding" id="responsive">
+<section class="responsive text-center section-padding" id="responsive">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

@@ -28,13 +28,6 @@ def handle_internal_server_error(error):
     return str(error)
 
 
-# @app.route('/home', methods=['GET'])
-# def home():
-#     if not session.get('logged_in'):
-#         return render_template('login.html')
-#     else:
-#         return render_template('index.html')
-
 @app.route('/home', methods=['POST'])
 def login():
     _username = request.form['username']
@@ -58,7 +51,7 @@ def login():
 
         if data is not None:
             session['logged_in'] = True
-            return render_template('index.html', items=all_data)
+            return render_template('index.html', items=all_data, section="hero")
         else:
             return "No user found"
 
@@ -120,7 +113,7 @@ def search():
         conn.rollback()
     conn.close()
     g.search_term = _search_term
-    return render_template('index.html', items=data)
+    return render_template('index.html', items=data, section="features")
 
 
 @app.route("/logout")
