@@ -1,6 +1,7 @@
 import os
 import webbrowser
 
+import werkzeug
 from flask import Flask, render_template, request, json, url_for, send_file, g
 from flaskext.mysql import MySQL
 
@@ -91,7 +92,7 @@ def writeblog():
 def search():
     try:
         _search_term = request.args['search_input']
-    except:
+    except werkzeug.exceptions.BadRequest:
         conn = mysql.connect()
         cursor = conn.cursor()
         all_data = fetch_reviews(conn, cursor)
