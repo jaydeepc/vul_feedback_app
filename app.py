@@ -124,6 +124,8 @@ def logout():
 
 @app.route('/get-files', methods=['GET'])
 def get_file():
+    if not session.get('logged_in'):
+        return render_template('login.html')
     _file=request.args['file']
     return send_file(_file, attachment_filename='tne.pdf')
 
