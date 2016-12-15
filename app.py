@@ -2,7 +2,7 @@ import os
 import webbrowser
 
 import werkzeug
-from flask import Flask, render_template, request, json, session, send_file, g
+from flask import Flask, render_template, request, json, session, send_file, g, url_for
 from flaskext.mysql import MySQL
 
 app = Flask(__name__)
@@ -20,6 +20,9 @@ mysql.init_app(app)
 
 @app.route("/")
 def main():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+
     return render_template('login.html')
 
 
@@ -122,12 +125,13 @@ def logout():
     return render_template('login.html')
 
 
-@app.route('/get-files', methods=['GET'])
+@app.route('/home/getfiles', methods=['GET'])
 def get_file():
     if not session.get('logged_in'):
         return render_template('login.html')
-    _file=request.args['file']
-    return send_file(_file, attachment_filename='tne.pdf')
+    else:
+        file = request.args['file']
+        return send_file(file)
 
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)

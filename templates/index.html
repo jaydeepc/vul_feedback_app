@@ -78,6 +78,16 @@
     });
 </script>
 {% endif %}
+
+{% if file_name %}
+<script>
+    $(function() {
+        alert("{{ file_name }}");
+       $("#term").prop("href", "/get_files?file={{ file_name }}");
+    });
+</script>
+{% endif %}
+
 <header id="home">
     <nav>
         <div class="container-fluid">
@@ -180,7 +190,7 @@
                                 successfully!
                             </div>
                             <h3>Write A Review
-                                <a class="fa fa-info-circle" href="/get-files?file=static/terms.pdf" target="_blank"
+                                <a class="fa fa-info-circle" href="/home/getfiles?file=terms.pdf" target="_blank" id="term"
                                    aria-hidden="true" style="font-size:20px;color:darkslategrey"></a>
                             </h3>
                             <fieldset>
