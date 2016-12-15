@@ -16,14 +16,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/searchbox.css') }}">
     <script type="text/javascript">
-        <!--window.onload = function() {-->
-            <!--// short timeout-->
-            <!--setTimeout(function() {-->
-                <!--$(document.body).scrollTop(0);-->
-            <!--}, 15);-->
-        <!--};-->
+          $(window).scroll(function(){
+              if ($(this).scrollTop() > 135) {
+                  $('.pull').addClass('fixed');
+                  $('.indicator').hide();
+              } else {
+                  $('.pull').removeClass('fixed');
+                  $('.indicator').show();
+              }
+          });
 
     </script>
+    <style>
+        .fixed {position:fixed; top:0; left:0;}
+    </style>
     <script language="javascript" type="text/javascript">
         $(function() {
            $("form[id='contact']").submit(function(e) {
@@ -59,7 +65,6 @@
         function scrollTo(hash) {
             location.hash = "#" + hash;
         }
-
 
     </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">

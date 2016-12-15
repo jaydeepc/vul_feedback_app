@@ -122,6 +122,7 @@ def search():
 @app.route("/logout")
 def logout():
     session['logged_in'] = False
+    app.secret_key = os.urandom(12)
     return render_template('login.html')
 
 
