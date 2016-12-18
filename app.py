@@ -109,6 +109,7 @@ def search():
     cursor = conn.cursor()
     query = "select review_hotel, review_city, review_body, review_rating from reviews where review_hotel like '%{0}%' or review_city like '%{0}%' or review_body like '%{0}%'".format(
         _search_term)
+
     try:
         cursor.execute(query)
         data = cursor.fetchall()
@@ -116,6 +117,7 @@ def search():
         conn.rollback()
     conn.close()
     g.search_term = _search_term
+
     return render_template('index.html', items=data, section="features")
 
 

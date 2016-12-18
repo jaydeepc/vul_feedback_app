@@ -46,7 +46,7 @@
         });
 
         function send_data(){
-            location.href='/home?search_input=' + document.getElementById('search_input').value;
+            location.href='/home?search_input=' + unescape(document.getElementById('search_input').value);
         }
 
         function show_search_details(){
@@ -87,7 +87,6 @@
 {% if file_name %}
 <script>
     $(function() {
-        alert("{{ file_name }}");
        $("#term").prop("href", "/get_files?file={{ file_name }}");
     });
 </script>
@@ -167,6 +166,7 @@
                         <tbody>
                         {% for item in items %}
                         {% autoescape false %}
+                            <!--<script>alert("{{ item[0] }}");</script>-->
                         <tr>
                             <td>{{item[0]}}</td>
                             <td>{{item[1]}}</td>
