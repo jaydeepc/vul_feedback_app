@@ -40,7 +40,7 @@ def login():
         conn = mysql.connect()
         cursor = conn.cursor()
         all_data = None
-        query = "select user_name from tbl_user where user_username='{0}' and user_password='{1}'".format(_username,
+        query = "select user_name from users where user_username='{0}' and user_password='{1}'".format(_username,
                                                                                                           _password)
         try:
             cursor.execute(query)

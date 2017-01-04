@@ -16,7 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_user`
+-- Table structure for table `users`
 --
 -- DROP DATABASE IF EXISTS Feedback;
 -- CREATE Database Feedback;
@@ -25,16 +25,17 @@ GRANT ALL ON *.* to user@'%';
 
 USE Feedback;
 
-DROP TABLE IF EXISTS `tbl_user`;
+DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `reviews`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
-CREATE TABLE `tbl_user` (
+CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) DEFAULT NULL,
   `user_username` varchar(45) DEFAULT NULL,
   `user_password` varchar(45) DEFAULT NULL,
+  `user_email` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -49,13 +50,13 @@ CREATE TABLE `reviews` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `tbl_user` WRITE;
-/*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
-INSERT INTO `tbl_user` VALUES (1,'Admin','admin','admin'),(2,'Guest','guest','guest'),(3,'jd','jd_test','test');
-/*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Admin','admin','admin','owner@ourfeedback.com'),(2,'Harinee','harinee','pass123','hm@some.com'),(3,'jd','jd_test','test','jd@some.com');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
