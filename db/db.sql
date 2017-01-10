@@ -32,19 +32,19 @@ DROP TABLE IF EXISTS `reviews`;
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(45) DEFAULT NULL,
-  `user_username` varchar(45) DEFAULT NULL,
-  `user_password` varchar(45) DEFAULT NULL,
-  `user_email` varchar(60) DEFAULT NULL,
+  `user_name` varchar(300) DEFAULT NULL,
+  `user_username` varchar(450) DEFAULT NULL,
+  `user_password` varchar(450) DEFAULT NULL,
+  `user_email` varchar(600) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `reviews` (
   `review_id` int(11) NOT NULL AUTO_INCREMENT,
-  `review_hotel` varchar(45) DEFAULT NULL,
-  `review_city` varchar(45) DEFAULT NULL,
-  `review_body` varchar(45) DEFAULT NULL,
-  `review_rating` int(10) DEFAULT NULL,
+  `review_hotel` varchar(450) DEFAULT NULL,
+  `review_city` varchar(450) DEFAULT NULL,
+  `review_body` varchar(450) DEFAULT NULL,
+  `review_rating` int(100) DEFAULT NULL,
   PRIMARY KEY (`review_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
