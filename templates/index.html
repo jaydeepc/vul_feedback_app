@@ -32,17 +32,10 @@
     </style>
     <script language="javascript" type="text/javascript">
         $(function() {
-           $("form[id='contact']").submit(function(e) {
-              location.reload();
-              $.post($(this).attr("action"), // url
-              $(this).serialize(), // data
-              function (data) { //success callback function
-                  $("#success_msg").css("display", "block");
-              }).error(function () {
-                  console.log("There are errors");
-               });
-                 e.preventDefault();
-           });
+            $('#contact').on('submit', function (e) {
+                document.location.hash = '#features',
+                e.preventDefault();
+            });
         });
 
         function send_data(){
@@ -62,10 +55,6 @@
             }
         });
 
-        function scrollTo(hash) {
-            location.hash = "#" + hash;
-        }
-
     </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -78,9 +67,15 @@
 <body id="top">
 {% if section %}
 <script>
-    $(function() {
-       $("html, body").animate({ scrollTop: $("#{{ section }}").offset().top }, 4000);
-    });
+$(document).ready(function() {
+    $("html, body").animate({ scrollTop: $("#{{ section }}").offset().top }, 4);
+});
+</script>
+{% endif %}
+
+{% if g.display %}
+<script>
+    alert(g.display);
 </script>
 {% endif %}
 
@@ -154,6 +149,8 @@
                         <button onclick="send_data();show_search_details();">Search</button>
                     </form>
                     <label class="search-data">Showing search results for: <span id="searched_term">{% autoescape false %}{{ g.search_term }}{% endautoescape %}</span></label>
+                    <div style="color: #009900; font-size:16px" id="success_msg">Review submitted successfully!</div>
+
                     <table>
                         <thead>
                         <tr>
@@ -191,9 +188,6 @@
                 <div class="features-wrapper">
                     <div class="container">
                         <form id="contact" action="/home/submitted_review" method="POST">
-                            <div style="color: #009900; font-size:16px" id="success_msg">Review submitted
-                                successfully!
-                            </div>
                             <h3>Write A Review
                                 <a class="fa fa-info-circle" href="/home/getfiles?file=terms.pdf" target="_blank" id="term"
                                    aria-hidden="true" style="font-size:20px;color:darkslategrey"></a>
