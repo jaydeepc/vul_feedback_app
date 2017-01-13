@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/searchbox.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.toast.min.css') }}">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.toast.min.js') }}"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
     <script type="text/javascript">
           $(window).scroll(function(){
               if ($(this).scrollTop() > 135) {
@@ -31,13 +38,6 @@
         .fixed {position:fixed; top:0; left:0;}
     </style>
     <script language="javascript" type="text/javascript">
-        $(function() {
-            $('#contact').on('submit', function (e) {
-                document.location.hash = '#features',
-                e.preventDefault();
-            });
-        });
-
         function send_data(){
             location.href='/home?search_input=' + unescape(document.getElementById('search_input').value);
         }
@@ -56,6 +56,29 @@
         });
 
     </script>
+    <script>
+    $(function() {
+      $('#contact-submit').click(function() {
+            hotel_name = $("#hotel").val();
+            city_name = $("#city").val();
+            review = $("#review").val();
+            rating = $("#rating").val();
+
+        $.ajax({
+          type: 'POST',
+          data: 'hotel='+hotel_name+'&city='+city_name+'&review='+review+'&rating='+rating,
+          success: function(){
+            toastr.success("Review Submitted Successfully");
+            window.location.hash = '#features';
+          },
+          error: function(){ toastr.error("Review Was Not Submitted");document.location.hash = "hero"; },
+          url: '/home/submitted_review',
+          cache:false
+        });
+      });
+    });
+
+</script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,12 +93,15 @@
 $(document).ready(function() {
     $("html, body").animate({ scrollTop: $("#{{ section }}").offset().top }, 4);
 });
+<<<<<<< HEAD
 </script>
 {% endif %}
 
 {% if g.display %}
 <script>
     alert(g.display);
+=======
+>>>>>>> JD: Added post calls, jquery
 </script>
 {% endif %}
 
@@ -187,7 +213,11 @@ $(document).ready(function() {
             <div class="col-md-12">
                 <div class="features-wrapper">
                     <div class="container">
+<<<<<<< HEAD
                         <form id="contact" action="/home/submitted_review" method="POST">
+=======
+                        <form id="contact">
+>>>>>>> JD: Added post calls, jquery
                             <h3>Write A Review
                                 <a class="fa fa-info-circle" href="/home/getfiles?file=terms.pdf" target="_blank" id="term"
                                    aria-hidden="true" style="font-size:20px;color:darkslategrey"></a>
@@ -209,7 +239,7 @@ $(document).ready(function() {
                                        min="1" max="10" tabindex="4" required>
                             </fieldset>
                             <fieldset>
-                                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">
+                                <button name="submit" type="button" id="contact-submit" data-submit="...Sending">
                                     Submit
                                 </button>
                             </fieldset>

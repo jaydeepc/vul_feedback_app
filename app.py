@@ -13,7 +13,7 @@ mysql = MySQL()
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'Feedback'
-app.config['MYSQL_DATABASE_HOST'] = 'db_server'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_PORT'] = '3306'
 mysql.init_app(app)
 
@@ -42,6 +42,7 @@ def login():
         all_data = None
         query = "select user_name from users where user_username='{0}' and user_password='{1}'".format(_username,
                                                                                                           _password)
+        print (query)
         try:
             cursor.execute(query)
             data = cursor.fetchone()
@@ -63,7 +64,7 @@ def login():
 
 
 def fetch_reviews(conn, cursor):
-    query = "select review_hotel, review_city, review_body, review_rating from reviews"
+    query = "select review_hotel, review_city, review_body, review_rating from reviews ORDER BY review_id DESC limit 10"
     try:
         cursor.execute(query)
         all_data = cursor.fetchall()
@@ -74,6 +75,7 @@ def fetch_reviews(conn, cursor):
 
 @app.route('/home/submitted_review', methods=['POST'])
 def writeblog():
+
     _review_hotel = request.form['hotel']
     _review_city = request.form['city']
     _review_body = request.form['review']
@@ -88,8 +90,9 @@ def writeblog():
         conn.commit()
     except:
         conn.rollback()
+    all_data = fetch_reviews(conn, cursor)
     conn.close()
-    return render_template('index.html')
+    return render_template('index.html', items=all_data)
 
 
 @app.route('/home', methods=['GET'])
