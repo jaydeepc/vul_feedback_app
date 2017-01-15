@@ -23,14 +23,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
     <script type="text/javascript">
+        function show_menu_baloon(){
+          if ($(this).scrollTop() > 135) {
+              $('.pull').addClass('fixed');
+              $('.indicator').hide();
+          } else {
+              $('.pull').removeClass('fixed');
+              $('.indicator').show();
+          }
+        }
           $(window).scroll(function(){
-              if ($(this).scrollTop() > 135) {
-                  $('.pull').addClass('fixed');
-                  $('.indicator').hide();
-              } else {
-                  $('.pull').removeClass('fixed');
-                  $('.indicator').show();
-              }
+            show_menu_baloon();
           });
 
     </script>
@@ -49,10 +52,13 @@
         $(document).ready(function() {
             if (/search_input/.test(window.location.href)) {
 	            $(".search-data").show();
+	            $("#nav-toggle").show();
             }
             else{
                 $(".search-data").hide();
             }
+
+
         });
 
     </script>
@@ -92,6 +98,8 @@
 <script>
 $(document).ready(function() {
     $("html, body").animate({ scrollTop: $("#{{ section }}").offset().top }, 4);
+    show_menu_baloon();
+    $("#nav-toggle").trigger('click');
 });
 </script>
 {% endif %}
@@ -205,11 +213,7 @@ $(document).ready(function() {
             <div class="col-md-12">
                 <div class="features-wrapper">
                     <div class="container">
-<<<<<<< HEAD
-                        <form id="contact" action="/home/submitted_review" method="POST">
-=======
                         <form id="contact">
->>>>>>> JD: Added post calls, jquery
                             <h3>Write A Review
                                 <a class="fa fa-info-circle" href="/home/getfiles?file=terms.pdf" target="_blank" id="term"
                                    aria-hidden="true" style="font-size:20px;color:darkslategrey"></a>
@@ -231,7 +235,7 @@ $(document).ready(function() {
                                        min="1" max="10" tabindex="4" required>
                             </fieldset>
                             <fieldset>
-                                <button name="submit" type="button" id="contact-submit" data-submit="...Sending">
+                                <button name="submit" type="button" id="contact-submit" data-submit="...Sending" onclick="$('#contact')[0].reset();">
                                     Submit
                                 </button>
                             </fieldset>
