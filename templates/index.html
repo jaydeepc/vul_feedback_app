@@ -26,10 +26,14 @@
         function show_menu_baloon(){
           if ($(this).scrollTop() > 135) {
               $('.pull').addClass('fixed');
-              $('.indicator').hide();
+              $('.pull').css("display", "block");
+              $('#nav-toggle').addClass('nav_slide_button active');
+              $('.indicator').hide()
           } else {
               $('.pull').removeClass('fixed');
-              $('.indicator').show();
+              $('.pull').css("display", "none");
+              $('#nav-toggle').removeClass('nav_slide_button active');
+              $('.indicator').show()
           }
         }
           $(window).scroll(function(){
