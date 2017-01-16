@@ -105,6 +105,15 @@ $(document).ready(function() {
     show_menu_baloon();
     $("#nav-toggle").trigger('click');
 });
+
+function showPull(){
+    if ($('.pull').css("display") == "none"){
+        $('.pull').css("display", "block");
+    }
+    else{
+        $('.pull').css("display", "none");
+    }
+}
 </script>
 {% endif %}
 
@@ -143,7 +152,7 @@ $(document).ready(function() {
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-right navicon">
-                    <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
+                    <a id="nav-toggle" class="nav_slide_button" onclick="showPull();"><span></span></a>
                 </div>
             </div>
             <div class="row">
