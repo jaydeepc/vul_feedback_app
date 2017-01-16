@@ -97,6 +97,7 @@ def writeblog():
 
 @app.route('/home', methods=['GET'])
 def search():
+    data = None
     if not session.get('logged_in'):
         return render_template('login.html')
 

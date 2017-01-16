@@ -73,13 +73,13 @@
             city_name = $("#city").val();
             review = $("#review").val();
             rating = $("#rating").val();
-
         $.ajax({
           type: 'POST',
           data: 'hotel='+hotel_name+'&city='+city_name+'&review='+review+'&rating='+rating,
           success: function(){
             toastr.success("Review Submitted Successfully");
             window.location.hash = '#features';
+            $("#contact").trigger('reset')
           },
           error: function(){ toastr.error("Review Was Not Submitted");document.location.hash = "hero"; },
           url: '/home/submitted_review',
@@ -88,15 +88,16 @@
       });
     });
 
-function showPull(){
-    if ($('.pull').css("display") == "none"){
-        $('.pull').css("display", "block");
+    function showPull(){
+        if ($('.pull').css("display") == "none"){
+            $('.pull').css("display", "block");
+        }
+        else if($('.pull').css("display") == "block"){
+            $('.pull').css("display", "none");
+            $('#nav-toggle').removeClass('nav_slide_button active');
+        }
     }
-    else if($('.pull').css("display") == "block"){
-        $('.pull').css("display", "none");
-        $('#nav-toggle').removeClass('nav_slide_button active');
-    }
-}
+
 </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -248,7 +249,7 @@ $(document).ready(function() {
                                        min="1" max="10" tabindex="4" required>
                             </fieldset>
                             <fieldset>
-                                <button name="submit" type="button" id="contact-submit" data-submit="...Sending" onclick="$('#contact')[0].reset();">
+                                <button name="submit" type="button" id="contact-submit" data-submit="...Sending">
                                     Submit
                                 </button>
                             </fieldset>
