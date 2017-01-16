@@ -88,6 +88,15 @@
       });
     });
 
+function showPull(){
+    if ($('.pull').css("display") == "none"){
+        $('.pull').css("display", "block");
+    }
+    else if($('.pull').css("display") == "block"){
+        $('.pull').css("display", "none");
+        $('#nav-toggle').removeClass('nav_slide_button active');
+    }
+}
 </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contactform.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -105,15 +114,6 @@ $(document).ready(function() {
     show_menu_baloon();
     $("#nav-toggle").trigger('click');
 });
-
-function showPull(){
-    if ($('.pull').css("display") == "none"){
-        $('.pull').css("display", "block");
-    }
-    else{
-        $('.pull').css("display", "none");
-    }
-}
 </script>
 {% endif %}
 

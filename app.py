@@ -110,7 +110,7 @@ def search():
         return render_template('index.html', items=all_data)
     conn = mysql.connect()
     cursor = conn.cursor()
-    query = "select review_hotel, review_city, review_body, review_rating from reviews where review_hotel like '%{0}%' or review_city like '%{0}%' or review_body like '%{0}%'".format(
+    query = "select review_hotel, review_city, review_body, review_rating from reviews where review_hotel like '%{0}%' or review_city like '%{0}%' or review_body like '%{0}%' ORDER BY review_id DESC limit 10".format(
         _search_term)
 
     try:
