@@ -79,6 +79,7 @@
           success: function(){
             toastr.success("Review Submitted Successfully");
             window.location.hash = '#features';
+            $('body').load(location.href);
             $("#contact").trigger('reset')
           },
           error: function(){ toastr.error("Review Was Not Submitted");document.location.hash = "hero"; },
