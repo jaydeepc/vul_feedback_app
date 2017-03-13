@@ -1,6 +1,6 @@
 * This app can be used to demonstrate the following vulnerabilities: 
 	* SQL Injection
-	* XSS - Reflective and Persistant
+	* XSS - Reflective and Persistent
 	* Path Traversal 	
 
 # Business Details
