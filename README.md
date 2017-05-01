@@ -16,3 +16,7 @@ The future of the business lies in attracting hotels once we have a successful d
 # Setup
 You need [docker](https://docs.docker.com/engine/installation/) installed in the machine. 
 After cloning the repo, you can run ```docker-compose up``` and that should set up the application.
+
+# Dependencies Status
+[![Dependency Status](https://gemnasium.com/badges/github.com/jaydeepc/vul_feedback_app.svg)](https://gemnasium.com/github.com/jaydeepc/vul_feedback_app)
+
