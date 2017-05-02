@@ -36,13 +36,13 @@ def login():
     _username = request.form['username']
     _password = request.form['inputPassword']
 
+
     if _username and _password:
         conn = mysql.connect()
         cursor = conn.cursor()
         all_data = None
         query = "select user_name from users where user_username='{0}' and user_password='{1}'".format(_username,
                                                                                                           _password)
-        print (query)
         try:
             cursor.execute(query)
             data = cursor.fetchone()

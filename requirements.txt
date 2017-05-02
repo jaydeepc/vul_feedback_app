@@ -1,3 +1,5 @@
 flask
 flask-mysql
+pytest
+fabric3
 
