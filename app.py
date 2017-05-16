@@ -1,9 +1,11 @@
 import os
 import webbrowser
 
+import talisman as talisman
 import werkzeug
 from flask import Flask, render_template, request, json, session, send_file, g, url_for
 from flaskext.mysql import MySQL
+
 
 app = Flask(__name__)
 

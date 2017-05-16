@@ -13,9 +13,11 @@ db:
    - ../vul_feedback_app/db:/docker-entrypoint-initdb.d
 
 myapp:
-  container_name: app_server
-  build: .
+  image: deathbypython/app_server:latest
+  links:
+  - 'db:db_server'
   ports:
     - 5000:5000
-  links:
-    - 'db:db_server'
+  volumes:
+      - .:/home
+  command: bash -c "cd home && python app.py"

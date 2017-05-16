@@ -46,8 +46,22 @@
     </style>
     <script language="javascript" type="text/javascript">
         function send_data(){
-            location.href='/home?search_input=' + unescape(document.getElementById('search_input').value);
+            input = document.getElementById('search_input').value;
+            $.ajax({
+              type: 'GET',
+              data: {search_input: input},
+              beforeSend: function(xhr){xhr.setRequestHeader('X-XSS-Protection' , 0);},
+              success: function(){
+                show_search_details();
+                $("#search_input").trigger('reset')
+              },
+              url: '/home',
+              cache:false
+            });
         }
+
+      $('#search').click(function() {
+      });
 
         function show_search_details(){
             $(".search-data").css("display", "block");
@@ -187,7 +201,7 @@ $(document).ready(function() {
                 <div class="features-wrapper">
                     <form class="form-wrapper cf">
                         <input type="text" name="search_input" id="search_input" placeholder="Search here..." required>
-                        <button onclick="send_data();show_search_details();">Search</button>
+                        <button id="search" onclick="send_data();">Search</button>
                     </form>
                     <label class="search-data">Showing search results for: <span id="searched_term">{% autoescape false %}{{ g.search_term }}{% endautoescape %}</span></label>
                     <div style="color: #009900; font-size:16px" id="success_msg">Review submitted successfully!</div>
